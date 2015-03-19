@@ -1,0 +1,9 @@
+<%= form_for @post do |p| %>
+  Title: <%= p.text_field :title, :placeholder =>"What's On Your Mind", :data => {:error => "Please Enter Title"}, :required => true %><br>
+  Content: <%= p.text_area :content, :placeholder =>"Content goes here", :data => {:error => "Please Enter Content"}, :required => true %><br>
+  
+   <button type="submit" class="btn btn-success"> Post </button>&nbsp&nbsp
+   <%= link_to "Cancel", posts_path, :class => "btn btn-danger" %>
+  
+<% end %>
+

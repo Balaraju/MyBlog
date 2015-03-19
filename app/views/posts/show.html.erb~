@@ -1,0 +1,23 @@
+
+<div class= "container"  >
+  
+    <%= link_to 'Edit ', edit_post_path(@post), :class=>"pull-right" %><%= link_to ' Back', posts_path, :class=>"pull-right" %><br><hr>
+   Title: <%= @post.title %><br>
+    Content: <%= @post.content %><br>
+    Published By: <%= @post.user.email if @post.user.present? %> <%= @post.user.email if @post.user.present? %><br>
+    
+    <div class="new_comment">
+      <%= render "posts/comments_form" %>
+    </div>
+    
+    <div class="comment">
+      <%= render 'posts/comments' %>
+    </div> 
+    
+</div>
+<hr>
+
+
+
+ 
+ 

@@ -1,0 +1,12 @@
+
+<div class= "container"  >
+  <%= link_to "New Post", new_post_path , :class=>"pull-right"%><br><hr>
+<% @posts.each do |post| %>
+  Title: <%= link_to post.title, post %><br>
+  Content: <%= post.content %><br>
+  Published By: <%= post.user.email if post.user.present? %> <%= post.user.email if post.user.present? %><br>
+  <%= link_to 'Edit', edit_post_path(post) %> <%= link_to 'Read More', post %> 
+  <%= link_to 'Destroy',  post,  method: :delete, data: { confirm: 'Are you sure?' } %><hr>
+<% end %>
+</div>
+

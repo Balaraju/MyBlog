@@ -1,0 +1,4 @@
+<% @comments.each do |comment| %>
+  User: <%= comment.user.email %>
+  Comment: <%= comment.comment %><hr>
+<% end %>

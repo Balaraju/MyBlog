@@ -1,0 +1,14 @@
+<% unless current_user.present? %>
+
+<%= render "welcome/login"%>
+  <%= render "welcome/registration" %>
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login">
+  Login
+</button>
+
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign_up">
+  Register
+</button>
+<% else %>
+  Hello welcome : <%= current_user.email %> <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
+<% end %>

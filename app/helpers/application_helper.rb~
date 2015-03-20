@@ -11,10 +11,5 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
   
- def format_date(time)
-    time = time.to_date if time
-  	time.strftime("%d %b, %Y") if time
-	end
-	
 end
 

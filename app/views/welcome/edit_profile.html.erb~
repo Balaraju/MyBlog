@@ -1,0 +1,50 @@
+<div class="container">
+	<div class="row">
+	  <h2>My Profile Edit</h2><hr>
+	  <%= form_for @user, url: update_profile_path, method: :post,  :html => { :class => "form-horizontal"} do |f| %>
+	    
+	    <div class="form-group">
+        <label class="col-sm-2 control-label">First Name: </label>
+        <div class="col-sm-10">
+          <%= f.text_field :first_name, :class => "form-control",  :placeholder=>"Enter Your FirstName " %>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Last Name: </label>
+        <div class="col-sm-10">
+          <%= f.text_field :last_name, :class => "form-control",  :placeholder=>"Enter Your LastName " %>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+          <p class="form-control" >email@example.com</p>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Location </label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name = "location" id="inputPassword" placeholder="Enter Your Location">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label  class="col-sm-2 control-label">Profile Pic</label>
+        <div class="col-sm-10">
+          <%= f.file_field :avatar, :data => {:max_file_size => 5.megabytes, :error => " Please upload valid photo"}, :required =>true %>
+        </div>
+      </div>
+       
+      
+      <div class="form-group col-lg-offset-2">
+        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="cancel" class="btn btn-danger">Cancel</button>
+      </div>
+	  <% end %>
+	</div>
+</div>
+
+

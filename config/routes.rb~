@@ -8,11 +8,15 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'welcome#index'
    devise_for:users, controllers: {registrations: 'registrations', sessions: 'sessions'}
+  
   resources :posts do 
     resources :comments
   end
   
   get 'profile' => "welcome#profile"
+  get 'edit_profile' => "welcome#edit_profile"
+  
+  post 'update_profile' => "welcome#update_profile"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

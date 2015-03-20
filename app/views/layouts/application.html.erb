@@ -7,12 +7,50 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <!-- Navigation -->
+  <%= render "shared/header" %>
 
-<%= yield %>
-<script type="text/javascript"> 
-  $(function ()
-    { 
-      $("#myModal").modal({show:false }); });
-   </script>
+
+    <!-- Header -->
+    <% unless current_user.present? %>
+    <a name="about"></a>
+    <div class="intro-header">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1>My Blog</h1>
+                        <hr class="intro-divider">
+                        <ul class="list-inline intro-social-buttons">
+                            <li>
+                                <a data-toggle="modal" data-target="#login" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Login</span></a>
+                            </li>
+                            <li>
+                                <a data-toggle="modal" data-target="#sign_up" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Register</span></a>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->
+  <% else %>
+     Hello welcome : <%= current_user.email %> <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
+  <% end %>
+  <%= render "shared/footer" %>
+
+    
+<%= render "welcome/login"%>
+  <%= render "welcome/registration" %>
+	
+	
+
+
 </body>
 </html>

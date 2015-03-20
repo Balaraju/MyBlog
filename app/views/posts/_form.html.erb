@@ -1,9 +1,16 @@
+<h3>New Post </h3><hr>
 <%= form_for @post do |p| %>
-  Title: <%= p.text_field :title, :placeholder =>"What's On Your Mind", :data => {:error => "Please Enter Title"}, :required => true %><br>
-  Content: <%= p.text_area :content, :placeholder =>"Content goes here", :data => {:error => "Please Enter Content"}, :required => true %><br>
+  <div class="form-group">
+    <label for="title">Title</label> 
+    <%= p.text_field :title, :placeholder =>"What's On Your Mind", :data => {:error => "Please Enter Title"}, :required => true, :class=> "form-control"  %>
+  </div>
   
-   <button type="submit" class="btn btn-success"> Post </button>&nbsp&nbsp
-   <%= link_to "Cancel", posts_path, :class => "btn btn-danger" %>
+  <div class="form-group">
+    <label for="content">Content</label> 
+    <%= p.text_area :content, :placeholder =>"Content goes here", :data => {:error => "Please Enter Content"}, :required => true, :class=> "form-control" %><br>
+  </div> 
+     <button type="submit" class="btn btn-success"> Post </button>&nbsp&nbsp
+     <%= link_to "Cancel", posts_path, :class => "btn btn-danger" %>
   
 <% end %>
 

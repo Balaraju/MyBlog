@@ -5,8 +5,12 @@
   Title: <%= link_to post.title, post %><br>
   Content: <%= post.content %><br>
   Published By: <%= post.user.email if post.user.present? %> <%= post.user.email if post.user.present? %><br>
-  <%= link_to 'Edit', edit_post_path(post) %> <%= link_to 'Read More', post %> 
-  <%= link_to 'Destroy',  post,  method: :delete, data: { confirm: 'Are you sure?' } %><hr>
+  <%= link_to 'Read More', post %> 
+  <% if current_user == post.user %>
+    <%= link_to 'Edit', edit_post_path(post) %> 
+    <%= link_to 'Destroy',  post,  method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+  <hr>
 <% end %>
 </div>
 

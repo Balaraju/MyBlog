@@ -15,6 +15,10 @@ class PostsController < ApplicationController
   
   def edit
     @post = Post.find(params[:id])
+    
+    unless @post.user == current_user
+      render :text => "You don't have permission"
+    end
   end
   
   def update
@@ -26,38 +30,22 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    #raise @Post.comments.count.inspect
     @comments = @post.comments
   end
   
-  def comment_form
-    @comment = @Post.comments.new
-    @post = Post.find(params[:id])
-  end
-  
-  def comments
-  #raise params.inspect
-    @post = Post.find(params[:Post])
-    #@user = current_user.employee
-    @comment =  @post.comments.new(:comment => params[:comment])# :employee_id => @employee.id)     
-    if @comment.save
-      redirect_to post_path(@post)
-    else
-      redirect_to post_path(@post)    
-    end   
-  end
-  
+
   
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
+    if @post.user == current_user
+      render :text => "You don't have permission"
+    else
+      @post.destroy
+      redirect_to posts_path
+    end
   end
    
-  def landing_page
-    render :layout => false 
-  end
-  
+
   private
   
   def post_params

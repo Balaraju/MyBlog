@@ -46,7 +46,7 @@ $("form#new_user").bind("ajax:success", function(e, data, status, xhr) {
      window.location.replace('/');
   } 
   else {
-    console.log(xhr.responseJSON)
+    console.log(xhr.responseJSON);
     return alert(xhr.responseJSON);
   }
 });

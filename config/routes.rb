@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :posts do 
     resources :comments
   end
+  
+  get 'profile' => "welcome#profile"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

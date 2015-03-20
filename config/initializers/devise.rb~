@@ -43,7 +43,7 @@ Devise.setup do |config|
   # to authenticate or find a user. Default is :email.
   config.case_insensitive_keys = [ :email ]
   
-  config.http_authenticatable_on_xhr = false
+  config.http_authenticatable_on_xhr = true 
   config.navigational_formats = ["*/*", :html, :json]
 
   # Configure which authentication keys should have whitespace stripped.

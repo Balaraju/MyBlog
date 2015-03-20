@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
         
-    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :remote => true ) do |f| %>
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :remote => true, :html => {:'data-type' => 'json'} ) do |f| %>
       <%= devise_error_messages! %>
       <div id = "error">
         
@@ -37,3 +37,19 @@
     </div>
   </div>
 </div>
+
+
+<script>
+$("form#new_user").bind("ajax:success", function(e, data, status, xhr) {
+  if (data.success) {
+    $('#login').modal('hide');
+     window.location.replace('/');
+  } 
+  else {
+    console.log(xhr.responseJSON);
+    return alert(xhr.responseJSON);
+  }
+});
+</script>
+
+

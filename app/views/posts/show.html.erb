@@ -1,14 +1,32 @@
 <br>
 <div class= "" style="background-color:#FFF8F8;" >
    <div class="post_index">  
-      <%= image_tag("female.jpg", :class=> "nav-avatar", :style => "width:70px;height:70px" ) %>
+      <% if @post.user.avatar.present? %>
+          <%= image_tag @post.user.avatar_url,  :class=> "nav-avatar", :style => "width:70px;height:70px" %> 
+        <% else %>
+          <%= image_tag("man.png", :class=> "nav-avatar", :style => "width:70px;height:70px" ) %>
+        <% end %>
       <%= link_to @post.title, @post , :class =>"post_title" %><br><br>
  
     <p><%= @post.content %></p><br>
-    <div class="by"> <%= format_date(@post.user.created_at) %>, <%= @post.user.email if @post.user.present? %></div>
-     <%= link_to 'Edit ', edit_post_path(@post), :class=>"pull-right" %><%= link_to ' Back', posts_path, :class=>"pull-right" %><br>
-     
-    <hr>
+    
+    <div class="by"> 
+      <%= format_date(@post.user.created_at) %>, 
+      <% if @post.user.present? && @post.user.first_name.present? %>
+        <%= @post.user.full_name if @post.user.present? %>
+      <% else %>
+        <%= @post.user.email if @post.user.present? %>
+      <% end %>
+    </div>
+    <div class="pull-right">
+     <%if @post.user == current_user %>
+      <%= link_to 'Edit ', edit_post_path(@post), :class=>"btn btn-sm btn-success" %>
+       <%= link_to "Delete", @post, method: :delete, data: {confirm: "Are You sure?"}, :class=>"btn btn-danger btn-sm" %>
+      
+      <% end %>
+      <%= link_to ' Back', posts_path, :class=>"btn btn-sm btn-info" %><br>
+     </div>
+    <br><hr>
     <div class="new_comment">
       <%= render "posts/comments_form" %>
     </div>
@@ -18,7 +36,7 @@
     </div> 
    </div> 
 </div>
-<hr>
+
 
 
 

@@ -1,4 +1,4 @@
-<h3>New Post </h3>
+<h3>New Post </h3><hr>
 <%= form_for @post do |p| %>
   <div class="form-group">
     <label for="title">Title</label> 
@@ -14,3 +14,9 @@
   
 <% end %>
 
+
+<style>
+.post_form{
+width:70%;
+}
+</style>

@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          
   has_many :posts
   has_one :location
-
+  has_many :comments, through: :posts
   mount_uploader :avatar, AvatarUploader
   
   def full_name

@@ -1,14 +1,15 @@
 
 <div class= "container"  >
+<h3>Posts</h3>
   <%= link_to "New Post", new_post_path , :class=>"pull-right"%><br><hr>
   <div class="post_index">
     <% @posts.each do |post| %>
       <div class="user_image">      
-        <%# if post.user.profile_pic.present? %>
-          <%# image_tag post.user.profile_pic,  :class=> "nav-avatar" %> 
-        <%# else %>
+        <% if post.user.avatar.present? %>
+          <%= image_tag post.user.avatar_url,  :class=> "nav-avatar", :style => "width:85px;height:100px" %> 
+        <% else %>
           <%= image_tag("man.png", :class=> "nav-avatar", :style => "width:85px;height:100px" ) %>
-        <%# end %>
+        <% end %>
       </div> 
       <div class="post_details">
         <%= link_to post.title, post , :class =>"post_title" %><br>
@@ -16,10 +17,7 @@
         <br> <%= post.content.first(220) %> ... <%= link_to ' Read More', post %> <br>
         
         
-        <% if current_user == post.user %>
-          <%= link_to 'Edit', edit_post_path(post) %> 
-          <%= link_to 'Destroy',  post,  method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %><br><hr>
+       <hr>
       </div>   
     <% end %>    
   </div>

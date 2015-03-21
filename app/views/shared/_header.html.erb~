@@ -18,7 +18,7 @@
                         <a href="/posts">Posts</a>
                     </li>
                     <li>
-                        <a href="/profile">My Profile </a>
+                        <a href="/profile" id="profile">My Profile </a>
                     </li>
                     <li>
                         
@@ -26,7 +26,14 @@
                     </li>
                 </ul>
             </div>
+            <% end %>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
+    
+    <script>
+      $("#profile").click(function(){
+        window.location.replace('/profile')
+      });
+    </script>

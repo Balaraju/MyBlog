@@ -1,4 +1,6 @@
 class WelcomeController < ApplicationController
+ before_action :authenticate_user!
+ 
   layout "profile", :only => [ :profile ]
   
   def index
@@ -20,12 +22,16 @@ class WelcomeController < ApplicationController
   end
   
   def update_profile
-    #raise params.inspect
+    a = Geocoder.search(params[:location])
+    address = a.first 
     @user = current_user
     @user.update(first_name: params[:user][:first_name], last_name: params[:user][:last_name], avatar: params[:user][:avatar])
-    a = Geocoder.search(params[:location])
-    address = a.first   
-    Location.create( lattitude: address.latitude, longtitude: address.longitude, city:  address.city, user_id: current_user.id)
+    
+    if @user.location.present?  
+      @user.location.update(lattitude: address.latitude, longtitude: address.longitude, city:  address.city)
+    else
+       Location.create( lattitude: address.latitude, longtitude: address.longitude, city:  address.city, user_id: current_user.id)
+    end
     redirect_to profile_path
   end
   

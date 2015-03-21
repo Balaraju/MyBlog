@@ -1,4 +1,6 @@
+
 <%= form_for [@post, @comment],  url: post_comments_path(@post) do |f| %>
-  <%= f.text_area :comment %><br>
-  <%= f.submit %><hr>
+  <h4>Add Comment </h4>
+  <%= f.text_area :comment, :class => "form-control" , required: :true%><br>
+  <button type="submit" class=" pull-right btn btn-success">Comment</button><hr>
 <% end %>

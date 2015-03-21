@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="#">My Blog</a>
+                <a class="navbar-brand topnav" href="/posts">My Blog</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
            <% if current_user.present? %>
@@ -18,7 +18,7 @@
                         <a href="/posts">Posts</a>
                     </li>
                     <li>
-                        <a href="/profile">My Profile </a>
+                        <a href="/profile" id="profile">My Profile </a>
                     </li>
                     <li>
                         
@@ -31,3 +31,9 @@
         </div>
         <!-- /.container -->
     </nav>
+    
+    <script>
+      $("#profile").click(function(){
+        window.location.replace('/profile')
+      });
+    </script>

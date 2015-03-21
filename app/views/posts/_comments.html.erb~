@@ -1,4 +1,21 @@
-<% @comments.each do |comment| %>
-  User: <%= comment.user.email %>
-  Comment: <%= comment.comment %><hr>
+<br><hr>
+<h4>Comments</h4>
+<% @comments.each do |comm| %> 
+  
+    <div href="#" class="cmt-thumb">
+      <%= image_tag comm.user.avatar_url, :style=>"width:40px!important; height:40px;" %>
+    </div>
+    
+    <div class="cmt-details">         
+      <%= link_to comm.user.full_name , "#" %><br>
+      <span> <%=comm.comment %> </span>
+      
+    </div>
+    <div class="by">
+      <p><%= time_ago_in_words(comm.created_at)%> ago</p>
+    </div>
+    <% if comm.user == current_user %>
+       <%= link_to "Delete", post_comment_path(@post, comm), data: {confirm: "Are You sure?"}, method: :delete, :class => "btn btn-danger btn-sm pull-right" %>
+    <% end %><br>
+ <hr>       
 <% end %>

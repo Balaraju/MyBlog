@@ -20,29 +20,31 @@
       <div class="form-group">
         <label class="col-sm-2 control-label">Email</label>
         <div class="col-sm-10">
-          <p class="form-control" >email@example.com</p>
+          <p class="form-control-static" ><%= current_user.email %></p>
         </div>
       </div>
       
       <div class="form-group">
         <label class="col-sm-2 control-label">Location </label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" name = "location" id="inputPassword" placeholder="Enter Your Location">
+          <input type="text" class="form-control" name = "location" id="inputPassword" placeholder="Enter Your Location" value="<%= current_user.location.city if current_user.location.present? %>">
         </div>
       </div>
       
       <div class="form-group">
         <label  class="col-sm-2 control-label">Profile Pic</label>
         <div class="col-sm-10">
-          <%= f.file_field :avatar, :required =>true %>
+          <%= f.file_field :avatar %>
         </div>
       </div>
        
-      
-      <div class="form-group col-lg-offset-2">
-        <button type="submit" class="btn btn-success">Submit</button>
-        <button type="cancel" class="btn btn-danger">Cancel</button>
+      <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+          <button type="submit" class="btn btn-success">Save</button>
+          <%= link_to "Cancel", profile_path,:class => "btn btn-danger" %>
+        </div>
       </div>
+      
 	  <% end %>
 	</div>
 </div>
